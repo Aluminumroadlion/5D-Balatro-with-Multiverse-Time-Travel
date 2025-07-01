@@ -1,0 +1,73 @@
+[manifest]
+version = "0.0.1"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''
+        G.GAME.stake > 1 and {
+          label = localize('b_stake'),
+          tab_definition_function = G.UIDEF.current_stake,
+        } or nil,
+'''
+position = "before"
+payload = '''
+        {
+            label = "Spacetime",
+            tab_definition_function = create_UIBox_spacetime_map,
+        },
+'''
+match_indent=true
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+                config = {align=
+                        ((self.area == G.jokers) or (self.area == G.consumeables)) and "cr" or
+                        "bmi"
+                    , offset = 
+                        ((self.area == G.jokers) or (self.area == G.consumeables)) and {x=x_off - 0.4,y=0} or
+                        {x=0,y=0.65},
+                    parent =self}
+'''
+position = "at"
+payload = '''
+                config = {align=
+                        ((self.area == G.jokers) or (self.area == G.consumeables) or self.config.center.key == 'c_5dbwmtt_round') and "cr" or
+                        "bmi"
+                    , offset = 
+                        ((self.area == G.jokers) or (self.area == G.consumeables) or self.config.center.key == 'c_5dbwmtt_round') and {x=x_off - 0.4,y=0} or
+                        {x=0,y=0.65},
+                    parent =self}
+'''
+match_indent=true
+
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = '''
+function save_run()
+'''
+position = "at"
+payload = '''
+function save_run(args)
+'''
+match_indent=true
+
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = '''
+G.ARGS.save_run = G.culled_table
+'''
+position = "before"
+payload = '''
+if args and args.return_table then return G.culled_table end
+'''
+match_indent=true
+
+
+

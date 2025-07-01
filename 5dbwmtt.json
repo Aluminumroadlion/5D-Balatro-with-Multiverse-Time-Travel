@@ -1,0 +1,15 @@
+{
+	"id": "5dbwmtt",
+	"name": "5D Balatro with Multiverse Time Travel",
+	"display_name": "5DBWMTT",
+	"author": ["Aluminumroadlion"],
+	"description": "A mod that adds multiverse time travel to Balatro",
+	"prefix": "5dbwmtt",
+	"main_file": "5dbwmtt.lua",
+    "priority": 0,
+    "version": "0.0.1",
+	"badge_colour": "b1b1b1",
+    "dependencies": [
+        "Steamodded (>=1.0.0~ALPHA-1307d)"
+    ]
+}
