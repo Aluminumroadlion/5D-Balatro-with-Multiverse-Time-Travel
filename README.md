@@ -1,2 +1,2 @@
 # 5D Balatro With Multiverse Time Travel
-A mod that adds time travel to Balatro. Currently only includes linear time travel.
+A mod that adds time travel to Balatro.
